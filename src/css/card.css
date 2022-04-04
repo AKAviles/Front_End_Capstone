@@ -52,6 +52,7 @@ a {
   text-align: center;
   color: #ffffff;
   background-color: #eb761c;
+  position: absolute;
   transition: background-color 0.3s ease-out;
 }
 
@@ -67,6 +68,7 @@ a {
 .btn-prev {
   text-align: center;
   color: #ffffff;
+  position: relative;
   background-color: lightgrey;
   transition: background-color 0.3s ease-in;
 }
@@ -85,13 +87,14 @@ a {
   flex-direction: column;
   flex: 0 0 100%;
   position: relative;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 10px;
+  height: auto;
   justify-content: center;
   align-items: center;
 }
 
 .card-container {
   width: 100% ;
+  height: auto;
   align-content: center;
 }

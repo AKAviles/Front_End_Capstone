@@ -1,9 +1,28 @@
 import React, { useState } from "react";
+import { addQuote } from "../../utils/apiCalls";
+
 import "../../css/card.css";
 import "../../css/displayTotal.css";
 
-export default function DisplayTotal({ formData, handleQuoteData }) {
+export default function DisplayTotal({ formData, handleSubmit }) {
+  const initialQuoteData = {
+    sessions: "",
+    cost: "",
+  };
   const [clicked, setClicked] = useState(false);
+  const [quoteData, setQuoteData] = useState({ ...initialQuoteData });
+
+  function handleQuoteData(sessions, cost) {
+    setQuoteData({
+      sessions: sessions,
+      cost: cost,
+    });
+  }
+
+  function handleAddQuote() {
+    addQuote(quoteData);
+    window.location.reload(false);
+  }
 
   function addSessions(obj1) {
     let removalAmountNum;
@@ -127,6 +146,7 @@ export default function DisplayTotal({ formData, handleQuoteData }) {
 
   function handleCalculateTotal() {
     setClicked(!clicked);
+
     handleQuoteData(addSessions(formData), calculateTotal(formData));
     calculateTotal(formData);
   }
@@ -140,10 +160,19 @@ export default function DisplayTotal({ formData, handleQuoteData }) {
         Calculate
       </button>
       {clicked ? (
-        <p className='text'>
-          Your estimated total is: ${calculateTotal(formData)} based on{" "}
-          {addSessions(formData)} sessions!
-        </p>
+        <div>
+          <p className='text'>
+            Your estimated total is: ${calculateTotal(formData)} based on{" "}
+            {addSessions(formData)} sessions!
+          </p>
+          <button
+            className='btn btn-submit'
+            type='submit'
+            onClick={() => handleAddQuote()}
+          >
+            Save Quote!
+          </button>
+        </div>
       ) : null}
     </>
   );

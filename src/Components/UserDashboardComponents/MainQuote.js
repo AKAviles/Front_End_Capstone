@@ -27,15 +27,9 @@ export default function MainQuote() {
     layering: "",
   };
 
-  const initialQuoteData = {
-    sessions: "",
-    cost: "",
-  };
-
   const [formData, setFormData] = useState({ ...initialFormState });
   const [spot, setSpot] = useState(0);
   const [clickState, setClickState] = useState(-1); // 1,2,3,4 // -1
-  const [quoteData, setQuoteData] = useState({ ...initialQuoteData });
 
   function handleChange({ target }) {
     setFormData({
@@ -59,13 +53,6 @@ export default function MainQuote() {
     setFormData({ ...initialFormState });
   };
 
-  function handleQuoteData(sessions, cost) {
-    setQuoteData({
-      sessions: sessions,
-      cost: cost,
-    });
-  }
-
   let cards = [
     <RemovalAmount formData={formData} handleChange={handleChange} />,
     <SkinType formData={formData} handleChange={handleChange} />,
@@ -78,12 +65,7 @@ export default function MainQuote() {
     />,
     <TattooInkAmount formData={formData} handleChange={handleChange} />,
     <TattooScarring formData={formData} handleChange={handleChange} />,
-    <TattooLayering
-      formData={formData}
-      handleChange={handleChange}
-      handleSubmit={handleSubmit}
-      quoteData={quoteData}
-    />,
+    <TattooLayering formData={formData} handleChange={handleChange} />,
   ];
 
   function next() {
@@ -124,10 +106,7 @@ export default function MainQuote() {
           {cards[spot]}
           <div className='test-div-btn'>
             {spot === cards.length - 1 ? (
-              <DisplayTotal
-                formData={formData}
-                handleQuoteData={handleQuoteData}
-              />
+              <DisplayTotal formData={formData} handleSubmit={handleSubmit} />
             ) : null}
           </div>
           <div>

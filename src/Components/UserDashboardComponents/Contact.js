@@ -42,6 +42,7 @@ export default function MyQuotes() {
   }
 
   async function updateContactInformation(reqBody) {
+    console.log(reqBody);
     try {
       const response = await updateUser(reqBody);
       if (response.status === 200) setEditMode(false);
@@ -94,12 +95,14 @@ export default function MyQuotes() {
                     <span htmlFor='email'>E-Mail:</span>
                     <input
                       disabled='disabled'
-                      placeholder={fullUserInfo.email}
+                      value={fullUserInfo.email}
+                      onChange={(e) => onChangeHandler(e)}
                     />
                     <span htmlFor='phone'>Phone Number:</span>
                     <input
                       disabled='disabled'
-                      placeholder={fullUserInfo.phoneNumber}
+                      value={fullUserInfo.phoneNumber}
+                      onChange={(e) => onChangeHandler(e)}
                     />
                   </form>
                 )

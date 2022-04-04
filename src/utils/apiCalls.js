@@ -27,7 +27,7 @@ export function getUser() {
 
 export function updateUser(userObj) {
   return axios
-    .post(`${API_BASE_URL}/users/1`, userObj)
+    .put(`${API_BASE_URL}/users/1`, userObj)
     .then((res) => {
       return res;
     })

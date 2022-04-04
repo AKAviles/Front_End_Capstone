@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../../utils/apiCalls";
+import { Link } from "react-router-dom";
 import "../../css/register.css";
 import "../../css/MainEntry/mainEntry.css";
 
@@ -14,6 +15,7 @@ export default function Register() {
   const [userData, setUserData] = useState({ ...initialUserForm });
   const [duplicatePassword, setDuplicatePassword] = useState("");
   const [submissionCount, setSubmissionCount] = useState(0);
+  const [resStatus, setResStatus] = useState(false);
 
   function handleMainChange({ target }) {
     setUserData({
@@ -28,6 +30,7 @@ export default function Register() {
 
   function handleSubmit() {
     registerUser(userData);
+    setResStatus(true);
   }
 
   function validatePasswordsMatch() {
@@ -198,10 +201,25 @@ export default function Register() {
     );
   }
 
+  function directToLoginPage() {
+    return (
+      <div>
+        <h3>
+          Thank you for registering! To start a consultation, please login!
+        </h3>
+        <Link to='/login'>Login</Link>
+      </div>
+    );
+  }
+
   return (
     <div className='main-container'>
       {submissionCount > 0
-        ? duplicatePasswordMismatchDisplay()
+        ? resStatus
+          ? directToLoginPage()
+          : duplicatePasswordMismatchDisplay()
+        : resStatus
+        ? directToLoginPage()
         : startingDisplay()}
     </div>
   );

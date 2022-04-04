@@ -14,6 +14,28 @@ export function registerUser(userData) {
     });
 }
 
+export function getUser() {
+  return axios
+    .get(`${API_BASE_URL}/users/1`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function updateUser(userObj) {
+  return axios
+    .post(`${API_BASE_URL}/users/1`, userObj)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export function addQuote(quoteData) {
   return axios
     .post(`${API_BASE_URL}/users/1/quotes`, quoteData)
@@ -35,8 +57,6 @@ export function getQuotesForUser() {
       console.log(err);
     });
 }
-
-export function getQuoteById() {}
 
 export function deleteQuoteById(quoteId) {
   return axios

@@ -120,7 +120,7 @@ export default function MainQuote() {
           </div>
         </>
       ) : (
-        <div className='col-12'>
+        <div className='card-container col-12'>
           {cards[spot]}
           <div className='test-div-btn'>
             {spot === cards.length - 1 ? (

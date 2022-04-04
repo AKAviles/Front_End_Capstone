@@ -25,7 +25,8 @@ article {
   justify-content: center;
   flex-direction: column;
   box-shadow: 0 2px 12px 0 rgb(0 0 0 / 12%);
-  width: 50%;
+  min-width: 30%;
+  width: auto;
   flex-basis: 50%;
   flex-shrink: 1;
   border: 1px;
@@ -49,6 +50,7 @@ h1 {
 img.resize {
   align-self: left;
   align-items: left;
-  width: 135px;
+  width: 100px;
   height: auto;
+  padding: 10px 0 10px 10px;
 }

@@ -77,6 +77,7 @@ export default function Register() {
           type='text'
           placeholder='First Name'
           value={userData.firstName}
+          required='required'
           id='firstName'
           name='firstName'
           onChange={(e) => handleMainChange(e)}
@@ -86,6 +87,7 @@ export default function Register() {
           type='text'
           placeholder='Last Name'
           value={userData.lastName}
+          required='required'
           id='lastName'
           name='lastName'
           onChange={(e) => handleMainChange(e)}
@@ -93,8 +95,10 @@ export default function Register() {
 
         <input
           type='text'
-          placeholder='Phone Number'
+          placeholder='Phone Number 123-456-7890'
           value={userData.phoneNumber}
+          required='required'
+          pattern='^\d{3}-\d{3}-\d{4}$'
           id='phoneNumber'
           name='phoneNumber'
           onChange={(e) => handleMainChange(e)}
@@ -104,23 +108,27 @@ export default function Register() {
           type='text'
           placeholder='E-Mail'
           value={userData.email}
+          required='required'
           id='email'
           name='email'
           onChange={(e) => handleMainChange(e)}
         />
 
         <input
-          type='text'
+          type='password'
           placeholder='Password'
           value={userData.password}
+          required='required'
+          pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$'
           id='password'
           name='password'
           onChange={(e) => handleMainChange(e)}
         />
         <input
-          type='text'
+          type='password'
           placeholder='Retype your password'
           value={duplicatePassword}
+          required='required'
           id='duplicatePassword'
           name='duplicatePassword'
           onChange={handleDupliecatePasswordChange}
@@ -128,6 +136,14 @@ export default function Register() {
         <button className='btn btn-login btn-medium' type='submit'>
           Create Account!
         </button>
+        <ul>
+          <p>Password Requirements</p>
+          <p>At least 1 Uppercase</p>
+          <p>At least 1 Lowercase</p>
+          <p>At least 1 Number</p>
+          <p>At least 1 Symbol: !@#$%^&*_=+-</p>
+          <p>Min 8 characters and Max 12 characters</p>
+        </ul>
       </form>
     );
   }
@@ -145,6 +161,7 @@ export default function Register() {
           type='text'
           placeholder='First Name'
           value={userData.firstName}
+          required='required'
           id='firstName'
           name='firstName'
           onChange={(e) => handleMainChange(e)}
@@ -154,6 +171,7 @@ export default function Register() {
           type='text'
           placeholder='Last Name'
           value={userData.lastName}
+          required='required'
           id='lastName'
           name='lastName'
           onChange={(e) => handleMainChange(e)}
@@ -161,8 +179,10 @@ export default function Register() {
 
         <input
           type='text'
-          placeholder='Phone Number'
+          placeholder='Phone Number 123-456-7890'
           value={userData.phoneNumber}
+          required='required'
+          pattern='^\d{3}-\d{3}-\d{4}$'
           id='phoneNumber'
           name='phoneNumber'
           onChange={(e) => handleMainChange(e)}
@@ -172,23 +192,27 @@ export default function Register() {
           type='text'
           placeholder='E-Mail'
           value={userData.email}
+          required='required'
           id='email'
           name='email'
           onChange={(e) => handleMainChange(e)}
         />
 
         <input
-          type='text'
+          type='password'
           placeholder='Password'
           value={userData.password}
+          required='required'
+          pattern='^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*_=+-]).{8,12}$'
           id='password'
           name='password'
           onChange={(e) => handleMainChange(e)}
         />
         <input
-          type='text'
+          type='password'
           placeholder='Retype your password'
           value={duplicatePassword}
+          required='required'
           id='duplicatePassword'
           name='duplicatePassword'
           onChange={handleDupliecatePasswordChange}
@@ -197,6 +221,14 @@ export default function Register() {
         <button className='btn btn-register btn-medium' type='submit'>
           Create Account!
         </button>
+        <ul>
+          <p>Password Requirements</p>
+          <p>At least 1 Uppercase</p>
+          <p>At least 1 Lowercase</p>
+          <p>At least 1 Number</p>
+          <p>At least 1 Symbol: !@#$%^&*_=+-</p>
+          <p>Min 8 characters and Max 12 characters</p>
+        </ul>
       </form>
     );
   }

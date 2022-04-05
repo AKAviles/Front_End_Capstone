@@ -45,5 +45,5 @@ li:hover {
 
 
 li:visited {
-  color: #3a4c84;
+  list-style-type: none;
 }

@@ -1,3 +1,10 @@
 .register-form {
   color: blue;
 }
+
+
+
+form > p {
+  font-size: 12px;
+  padding: 3px;
+}

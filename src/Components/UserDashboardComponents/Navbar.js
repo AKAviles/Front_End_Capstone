@@ -9,15 +9,17 @@ export default function Navbar() {
     <div className='navigation'>
       <img className='resize' src={logo} alt='logo' />
       <ul className='navigation'>
-        <li>
-          <Link to='/dashboard'>Consultation</Link>
-        </li>
-        <li>
-          <Link to='/myQuotes'>My Quotes</Link>
-        </li>
-        <li>
-          <Link to='/contact'>Contact Information</Link>
-        </li>
+        <Link to='/dashboard'>
+          <li>Consultation</li>
+        </Link>
+
+        <Link to='/myQuotes'>
+          <li>My Quotes</li>
+        </Link>
+
+        <Link to='/contact'>
+          <li>Contact Information</li>
+        </Link>
       </ul>
     </div>
   );

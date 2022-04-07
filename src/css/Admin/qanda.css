@@ -1,0 +1,24 @@
+.qanda-container {
+    display: flex;
+    width: 75%;
+    height: auto;
+    overflow-y: auto;
+}
+
+.admin-dashboard-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+    
+  }
+
+
+.answers-list {
+    padding: 1px;
+    margin: 1px;
+    font-size: 14px;
+}
+

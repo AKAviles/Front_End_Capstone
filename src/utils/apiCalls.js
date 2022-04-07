@@ -3,6 +3,96 @@ import axios from "axios";
 const API_BASE_URL =
   process.env.REACT_APP_API_BASE_URL || "http://localhost:8080/api";
 
+//Admin Api's-----------------------------------------------------
+export function getAllUsers() {
+  return axios
+    .get(`${API_BASE_URL}/users`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function deleteUser(userId) {
+  return axios
+    .delete(`${API_BASE_URL}/users/${userId}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function addQuestion(questionData) {
+  return axios
+    .post(`${API_BASE_URL}/questions`, questionData)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getQuestions() {
+  return axios
+    .get(`${API_BASE_URL}/questions`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function updateQuestion(questionData, id) {
+  return axios
+    .put(`${API_BASE_URL}/questions/${id}`, questionData)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function deleteQuestion(id) {
+  return axios
+    .delete(`${API_BASE_URL}/questions/${id}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function addAnswerToQuestion(answerData, id) {
+  return axios
+    .post(`${API_BASE_URL}/questions/${id}/answers`, answerData)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function deleteAnswerToQuestion(questionId, answerId) {
+  return axios
+    .delete(`${API_BASE_URL}/questions/${questionId}/${answerId}/remove`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+//Non-Admin Api's-------------------------------------------------
 export function registerUser(userData) {
   return axios
     .post(`${API_BASE_URL}/users`, userData)

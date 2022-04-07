@@ -1,0 +1,23 @@
+.table-container {
+    display: flex;
+    width: 75%;
+    justify-content: center;
+}
+
+.delete-img {
+    height: 20px;
+    width: auto;
+    cursor: pointer;
+}
+
+th, td {
+    margin: 2px;
+    padding: 2px;
+    text-align: left;
+}
+
+
+
+table {
+    width: 75%;
+}

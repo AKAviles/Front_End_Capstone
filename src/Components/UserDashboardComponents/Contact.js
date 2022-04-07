@@ -6,6 +6,7 @@ import pen from "../../images/pen.png";
 import "../../css/app.css";
 import "../../css/dashboard.css";
 import "../../css/contact.css";
+import "../../css/MainEntry/mainEntry.css";
 
 export default function MyQuotes() {
   const [resStatus, setResStatus] = useState(false);
@@ -64,7 +65,7 @@ export default function MyQuotes() {
             <div className='contact-form-container'>
               {resStatus ? (
                 editMode ? (
-                  <form>
+                  <form autoComplete='off'>
                     <span
                       className='pen-img'
                       onClick={() => updateContactInformation(fullUserInfo)}
@@ -73,19 +74,21 @@ export default function MyQuotes() {
                     </span>
                     <span htmlFor='email'>E-Mail:</span>
                     <input
+                      type='text'
                       name='email'
                       value={fullUserInfo.email}
                       onChange={(e) => onChangeHandler(e)}
                     />
                     <span htmlFor='phone'>Phone Number:</span>
                     <input
+                      type='text'
                       name='phoneNumber'
                       value={fullUserInfo.phoneNumber}
                       onChange={(e) => onChangeHandler(e)}
                     />
                   </form>
                 ) : (
-                  <form>
+                  <form autoComplete='off'>
                     <img
                       className='pen-img'
                       src={pen}

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { registerUser } from "../../utils/apiCalls";
 import { Link } from "react-router-dom";
-import "../../css/register.css";
 import "../../css/MainEntry/mainEntry.css";
 
 export default function Register() {

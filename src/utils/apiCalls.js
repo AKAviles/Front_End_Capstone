@@ -15,6 +15,28 @@ export function getAllUsers() {
     });
 }
 
+export function getUserByEmail(email) {
+  return axios
+    .get(`${API_BASE_URL}/users/?email=${email}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+export function getUserByFirstName(name) {
+  return axios
+    .get(`${API_BASE_URL}/users/name?firstName=${name}`)
+    .then((res) => {
+      return res;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
 export function deleteUser(userId) {
   return axios
     .delete(`${API_BASE_URL}/users/${userId}`)

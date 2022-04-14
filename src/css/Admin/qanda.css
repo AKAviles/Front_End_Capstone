@@ -5,14 +5,17 @@
     overflow-y: auto;
 }
 
+.hidden {
+    display: none;
+}
+
 .admin-dashboard-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100vh;
-    
   }
 
 
@@ -20,5 +23,9 @@
     padding: 1px;
     margin: 1px;
     font-size: 14px;
+}
+
+.add {
+    align-self: center;
 }
 

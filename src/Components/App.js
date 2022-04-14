@@ -7,7 +7,7 @@ import Register from "./MainEntryComponents/Register";
 import MyQuotes from "./UserDashboardComponents/MyQuotes";
 import Contact from "./UserDashboardComponents/Contact";
 import Users from "./AdminDashboardComponents/Users";
-import QandA from "./AdminDashboardComponents/QandA";
+import QuestionList from "./AdminDashboardComponents/QuestionList";
 import "../css/app.css";
 import "../css/MainEntry/login.css";
 
@@ -23,7 +23,7 @@ function App() {
           <Route exact path='/myQuotes' element={<MyQuotes />} />
           <Route exact path='/contact' element={<Contact />} />
           <Route exact path='/admin/users' element={<Users />} />
-          <Route exact path='/admin/q-and-a' element={<QandA />} />
+          <Route exact path='/admin/q-and-a' element={<QuestionList />} />
         </Routes>
       </article>
     </BrowserRouter>

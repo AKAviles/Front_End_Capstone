@@ -94,8 +94,8 @@ export default function QandA() {
             <tbody>
               {resStatus
                 ? questionList.map((ques) => (
-                    <>
-                      <tr key={ques.questionId} id={ques.questionId}>
+                    <React.Fragment key={ques.questionId}>
+                      <tr>
                         <td>{ques.questionId}</td>
                         <td>{ques.question}</td>
                         <td>
@@ -125,17 +125,18 @@ export default function QandA() {
                         </td>
                       </tr>
                       <tr>
+                        <td></td>
                         <td>
                           <AnswerList clickState={clickState} ques={ques} />
                         </td>
+                        <td></td>
                       </tr>
-                    </>
+                    </React.Fragment>
                   ))
                 : null}
               <tr>
                 <td>
                   <span
-                    className='add'
                     onClick={() => setAddQuestionClicked(!addQuestionClicked)}
                   >
                     &#43;

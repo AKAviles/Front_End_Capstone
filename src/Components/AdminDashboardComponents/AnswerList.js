@@ -3,6 +3,7 @@ import {
   addAnswerToQuestion,
   deleteAnswerToQuestion,
 } from "../../utils/apiCalls";
+import "../../css/Admin/qanda.css";
 
 export default function AnswerList({ clickState, ques }) {
   const [addAnswerClicked, setAddAnswerClicked] = useState(false);
@@ -26,38 +27,38 @@ export default function AnswerList({ clickState, ques }) {
 
   return (
     <div
-      key={ques.questionId}
       className={`${
         parseInt(clickState) === ques.questionId ? "answers-list" : "hidden"
       }`}
     >
       {ques.answers.map((ans) => (
         <ul className='answers-list' key={ans.answerId}>
-          <span className='answers-list'>{ans.answer}</span>
-          <button
+          <p className='answer'>{ans.answer}</p>
+          <span
             onClick={() =>
               deleteAnswerToQuestion(ques.questionId, ans.answerId)
             }
           >
             &#215;
-          </button>
+          </span>
         </ul>
       ))}
-      <span
-        className='add'
-        onClick={() => setAddAnswerClicked(!addAnswerClicked)}
-      >
-        &#43;
-      </span>
-      {addAnswerClicked ? (
-        <input
-          key={ques.questionId}
-          value={answerData.answer}
-          placeholder='Answer'
-          onChange={(e) => handleAnswerInput(e)}
-          onKeyDown={(e) => handleAnswerAdd(e, ques.questionId)}
-        ></input>
-      ) : null}
+      <div>
+        <span
+          className='add'
+          onClick={() => setAddAnswerClicked(!addAnswerClicked)}
+        >
+          &#43;
+        </span>
+        {addAnswerClicked ? (
+          <input
+            value={answerData.answer}
+            placeholder='Answer'
+            onChange={(e) => handleAnswerInput(e)}
+            onKeyDown={(e) => handleAnswerAdd(e, ques.questionId)}
+          ></input>
+        ) : null}
+      </div>
     </div>
   );
 }

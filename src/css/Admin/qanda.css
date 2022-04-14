@@ -20,13 +20,36 @@
 
 
 .answers-list {
-    padding: 1px;
-    margin: 1px;
+    display: flex;
+    padding: 3px;
+    margin: 3px;
     font-size: 14px;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-end;
+}
+
+.answers-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-container {
+    align-self: flex-end;
+}
+
+.answer {
+    padding: 0;
+    margin-right: 10px;
 }
 
 .add {
-    align-self: center;
+    margin-left: auto ;
+    align-self: flex-end;
+}
+
+.add-answer {
+    align-self: flex-end;
 }
 
 span {

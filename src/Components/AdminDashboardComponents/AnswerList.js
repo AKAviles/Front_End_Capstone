@@ -28,22 +28,26 @@ export default function AnswerList({ clickState, ques }) {
   return (
     <div
       className={`${
-        parseInt(clickState) === ques.questionId ? "answers-list" : "hidden"
+        parseInt(clickState) === ques.questionId
+          ? "answers-container"
+          : "hidden"
       }`}
     >
       {ques.answers.map((ans) => (
-        <ul className='answers-list' key={ans.answerId}>
-          <p className='answer'>{ans.answer}</p>
-          <span
-            onClick={() =>
-              deleteAnswerToQuestion(ques.questionId, ans.answerId)
-            }
-          >
-            &#215;
-          </span>
-        </ul>
+        <div className='answers-list'>
+          <ul key={ans.answerId}>
+            <p className='answer'>{ans.answer}</p>
+            <span
+              onClick={() =>
+                deleteAnswerToQuestion(ques.questionId, ans.answerId)
+              }
+            >
+              &#215;
+            </span>
+          </ul>
+        </div>
       ))}
-      <div>
+      <div className='add-container'>
         <span
           className='add'
           onClick={() => setAddAnswerClicked(!addAnswerClicked)}

@@ -40,7 +40,7 @@ export default function QandA() {
 
   function handleAnswersShowHide(e) {
     setHidden(!hidden);
-    console.log(hidden);
+
     let targetNum = parseInt(e.target.id);
     let stateNum = parseInt(clickState);
     for (let i = 0; i < questionList.length; i++) {
@@ -82,13 +82,13 @@ export default function QandA() {
       </div>
       <div className='admin-dashboard-body'>
         <div className='qanda-container'>
-          <table>
+          <table className='row-formatting'>
             <thead>
               <tr>
                 <th>Question Id</th>
                 <th>Question</th>
                 <th>Answers</th>
-                <th>Actions</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -101,7 +101,6 @@ export default function QandA() {
                         <td>
                           {ques.questionId !== parseInt(clickState) ? (
                             <span
-                              key={ques.questionId}
                               id={ques.questionId}
                               onClick={(e) => handleAnswersShowHide(e)}
                             >
@@ -109,7 +108,6 @@ export default function QandA() {
                             </span>
                           ) : (
                             <span
-                              key={ques.questionId}
                               id={ques.questionId}
                               onClick={(e) => handleAnswersShowHide(e)}
                             >

@@ -29,3 +29,17 @@
     align-self: center;
 }
 
+span {
+    cursor: pointer;
+}
+
+.row-formatting {
+    padding: 5px;
+    margin: 20px;
+}
+
+tbody {
+    padding: 5px;
+    margin: 20px;
+}
+

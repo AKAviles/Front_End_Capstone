@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { getUser, updateUser } from "../../utils/apiCalls";
 import { getCurrentUser } from "../../Service/authService";
 import Navbar from "../UserDashboardComponents/Navbar";
@@ -10,13 +11,21 @@ import "../../css/contact.css";
 import "../../css/MainEntry/mainEntry.css";
 
 export default function MyQuotes() {
+  let navigate = useNavigate();
   const [resStatus, setResStatus] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [fullUserInfo, setFullUserInfo] = useState({});
   const [userId, setUserId] = useState();
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
-    getUserInfo();
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (!user) {
+      setLoggedIn(false);
+    } else {
+      getUserInfo();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -55,68 +64,84 @@ export default function MyQuotes() {
     }
   }
 
+  function handleRedirect(e) {
+    e.preventDefault();
+    navigate("/login");
+  }
+
   return (
-    <div className='dashboard-body'>
-      <div className='header'>
-        <Navbar />
-        <Logout />
-      </div>
-      <div className='dashboard-body'>
-        <div className='border-box-1'>
-          <div className='main-contact-container'>
-            <h3>Contact</h3>
-            <div className='contact-form-container'>
-              {resStatus ? (
-                editMode ? (
-                  <form autoComplete='off'>
-                    <span
-                      className='pen-img'
-                      onClick={() => updateContactInformation(fullUserInfo)}
-                    >
-                      &#10003;
-                    </span>
-                    <span htmlFor='email'>E-Mail:</span>
-                    <input
-                      type='text'
-                      name='email'
-                      value={fullUserInfo.email}
-                      onChange={(e) => onChangeHandler(e)}
-                    />
-                    <span htmlFor='phone'>Phone Number:</span>
-                    <input
-                      type='text'
-                      name='phoneNumber'
-                      value={fullUserInfo.phoneNumber}
-                      onChange={(e) => onChangeHandler(e)}
-                    />
-                  </form>
-                ) : (
-                  <form autoComplete='off'>
-                    <img
-                      className='pen-img'
-                      src={pen}
-                      alt='edit'
-                      onClick={() => activateEditMode()}
-                    />
-                    <span htmlFor='email'>E-Mail:</span>
-                    <input
-                      disabled='disabled'
-                      value={fullUserInfo.email}
-                      onChange={(e) => onChangeHandler(e)}
-                    />
-                    <span htmlFor='phone'>Phone Number:</span>
-                    <input
-                      disabled='disabled'
-                      value={fullUserInfo.phoneNumber}
-                      onChange={(e) => onChangeHandler(e)}
-                    />
-                  </form>
-                )
-              ) : null}
+    <>
+      {loggedIn ? (
+        <div className='dashboard-body'>
+          <div className='header'>
+            <Navbar />
+            <Logout />
+          </div>
+          <div className='dashboard-body'>
+            <div className='border-box-1'>
+              <div className='main-contact-container'>
+                <h3>Contact</h3>
+                <div className='contact-form-container'>
+                  {resStatus ? (
+                    editMode ? (
+                      <form autoComplete='off'>
+                        <span
+                          className='pen-img'
+                          onClick={() => updateContactInformation(fullUserInfo)}
+                        >
+                          &#10003;
+                        </span>
+                        <span htmlFor='email'>E-Mail:</span>
+                        <input
+                          type='text'
+                          name='email'
+                          value={fullUserInfo.email}
+                          onChange={(e) => onChangeHandler(e)}
+                        />
+                        <span htmlFor='phone'>Phone Number:</span>
+                        <input
+                          type='text'
+                          name='phoneNumber'
+                          value={fullUserInfo.phoneNumber}
+                          onChange={(e) => onChangeHandler(e)}
+                        />
+                      </form>
+                    ) : (
+                      <form autoComplete='off'>
+                        <img
+                          className='pen-img'
+                          src={pen}
+                          alt='edit'
+                          onClick={() => activateEditMode()}
+                        />
+                        <span htmlFor='email'>E-Mail:</span>
+                        <input
+                          disabled='disabled'
+                          value={fullUserInfo.email}
+                          onChange={(e) => onChangeHandler(e)}
+                        />
+                        <span htmlFor='phone'>Phone Number:</span>
+                        <input
+                          disabled='disabled'
+                          value={fullUserInfo.phoneNumber}
+                          onChange={(e) => onChangeHandler(e)}
+                        />
+                      </form>
+                    )
+                  ) : null}
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      ) : (
+        <button
+          className='btn btn-login btn-small'
+          onClick={(e) => handleRedirect(e)}
+        >
+          Log In
+        </button>
+      )}
+    </>
   );
 }

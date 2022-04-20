@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUser, updateUser } from "../../utils/apiCalls";
+import { getCurrentUser } from "../../Service/authService";
 import Navbar from "../UserDashboardComponents/Navbar";
 import Logout from "../UserDashboardComponents/Logout";
 import pen from "../../images/pen.png";
@@ -12,6 +13,7 @@ export default function MyQuotes() {
   const [resStatus, setResStatus] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [fullUserInfo, setFullUserInfo] = useState({});
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     getUserInfo();
@@ -19,8 +21,10 @@ export default function MyQuotes() {
   }, []);
 
   async function getUserInfo() {
+    let user = getCurrentUser();
+    setUserId(user.id);
     try {
-      const response = await getUser();
+      const response = await getUser(user.id);
       setFullUserInfo(response.data);
       if (response.status === 200) {
         setResStatus(true);
@@ -43,9 +47,8 @@ export default function MyQuotes() {
   }
 
   async function updateContactInformation(reqBody) {
-    console.log(reqBody);
     try {
-      const response = await updateUser(reqBody);
+      const response = await updateUser(userId, reqBody);
       if (response.status === 200) setEditMode(false);
     } catch (err) {
       console.log(err);

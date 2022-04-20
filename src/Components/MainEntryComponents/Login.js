@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../Service/authService";
+import { getCurrentUser } from "../../Service/authService";
 import "../../css/MainEntry/login.css";
 
 export default function Login() {
@@ -28,8 +29,14 @@ export default function Login() {
       if (!response) {
         setMessage("Incorrect Credentials. Try again.");
       } else {
-        navigate("/dashboard");
-        window.location.reload();
+        let user = JSON.parse(localStorage.getItem("user"));
+        if (user.roles[0] === "ROLE_ADMIN") {
+          navigate("/admin/users");
+          window.location.reload();
+        } else {
+          navigate("/dashboard");
+          window.location.reload();
+        }
       }
     } catch (error) {
       console.log(error);

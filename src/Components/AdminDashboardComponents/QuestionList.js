@@ -24,7 +24,7 @@ export default function QandA() {
 
   useEffect(() => {
     getAllQuestions();
-  }, [questionList]);
+  }, []);
 
   async function getAllQuestions() {
     try {

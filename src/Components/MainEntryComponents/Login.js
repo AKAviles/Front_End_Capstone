@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { loginUser } from "../../Service/authService";
-import { getCurrentUser } from "../../Service/authService";
 import "../../css/MainEntry/login.css";
 
 export default function Login() {
